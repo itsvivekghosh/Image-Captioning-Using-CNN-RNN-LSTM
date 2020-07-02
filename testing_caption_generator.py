@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import argparse
 
 
+
 class CaptionImage(object):
 	def __init__(self, img_path, model, xception_model, tokenizer):
 		self.img_path = img_path
