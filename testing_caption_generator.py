@@ -60,29 +60,29 @@ class CaptionImage(object):
 
 	def generate_desc(self, photo):
 
-	    in_text = str('')
+	    in_text = str('start')
 
 	    for i in range(self.max_length):
 
 	        sequence = self.tokenizer.texts_to_sequences([in_text])[0]
-	        print(sequence)
+	        # print(sequence)
 	        sequence = pad_sequences([sequence], maxlen=self.max_length)
-	        print(sequence)
+	        # print(sequence)
 
 	        pred = self.model.predict([photo, sequence], verbose=0)
-	        print(pred)
+	        # print(pred)
 
 	        pred = np.argmax(pred)
-	        print(pred)
+	        # print(pred)
 
 	        word = self.word_for_id(pred)
-	        print(word)
-
-	        if word is None:
-	            break
+	        # print(word)
 
 	        if word == 'end':
 	        	break
+
+	        if word is None:
+	            break
 
 	        in_text += ' ' + word
 
@@ -99,7 +99,7 @@ def main():
 
 	## If no path is given by the User then: Default Path is->
 	if img_path == None:
-		img_path = '../44.jpg'
+		img_path = 'samples/football.png'
 
 	## Loading Models and Tokenizer
 	tokenizer = load(open("tokenizer.p", "rb")) ## pickle Load
